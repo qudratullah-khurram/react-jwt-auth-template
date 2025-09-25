@@ -1,17 +1,23 @@
 // src/main.jsx
 
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter } from 'react-router' // add import for BrowserRouter
-import './index.css'
-import App from './App.jsx'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router';
 
-// Wrap the App component with the BrowserRouter component to enable
-// enable route handling throughout your application.
+// Import the UserProvider component
+import { UserProvider } from './contexts/UserContext.jsx';
+
+import App from './App.jsx';
+
+import './index.css';
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+      {/* Wrap the UserProvider around the App */}
+      <UserProvider>
+        <App />
+      </UserProvider>
     </BrowserRouter>
   </StrictMode>,
-)
+);
